@@ -8,6 +8,20 @@ $color-very-dark-gray: hsl(0, 0%, 41%);
 $font-alata: "Alata", sans-serif;
 $font-josefin: "Josefin Sans", sans-serif;
 
+@mixin mainHeading {
+  font-size: clamp(3.2rem, 2vw, 4.2rem);
+  text-transform: uppercase;
+  font-family: $font-josefin;
+}
+
+@mixin mainText {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  font-size: $font-alata;
+  letter-spacing: 0.13rem;
+  color: $color-dark-gray;
+}
+
 *,
 *::before,
 *::after {
@@ -18,4 +32,8 @@ $font-josefin: "Josefin Sans", sans-serif;
   outline: none;
   border: none;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
 }

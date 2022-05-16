@@ -1,0 +1,55 @@
+@use "base";
+
+.header {
+  &__heading {
+    font-size: clamp(4rem, 5vw, 7.2rem);
+    font-weight: 300;
+    font-family: base.$font-josefin;
+    color: base.$color-white;
+    line-height: 0.9;
+    max-width: 60rem;
+    padding: 2rem 3rem 2.5rem 1.5rem;
+    border: 1px solid base.$color-white;
+    text-transform: uppercase;
+    margin-left: 10rem;
+    margin-top: 10rem;
+
+    @media (max-width: 878px) {
+      max-width: 50rem;
+    }
+
+    @media (max-width: 700px) {
+      max-width: 90vw;
+      margin-inline: 5rem;
+      margin: auto;
+    }
+  }
+}
+
+.main {
+  .top {
+    &__heading {
+      @include base.mainHeading;
+      margin-bottom: 3rem;
+      letter-spacing: 0.4rem;
+    }
+    &__text {
+      @include base.mainText;
+    }
+  }
+  .bottom {
+    &__heading {
+      @include base.mainHeading;
+    }
+    &__text {
+      @include base.mainText;
+    }
+
+    &__link {
+      padding: 1.5rem 4rem;
+      color: base.$color-white;
+      background-color: base.$color-black;
+      font-size: 1.4rem;
+    }
+  }
+}
