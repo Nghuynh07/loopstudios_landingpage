@@ -1,15 +1,15 @@
-@use "base";
+@use "base" as *;
 
 .header {
   &__heading {
     font-size: clamp(4rem, 5vw, 7.2rem);
     font-weight: 300;
-    font-family: base.$font-josefin;
-    color: base.$color-white;
+    font-family: $font-josefin;
+    color: $color-white;
     line-height: 0.9;
     max-width: 60rem;
-    padding: 2rem 3rem 2.5rem 1.5rem;
-    border: 1px solid base.$color-white;
+    padding: 3rem;
+    border: 1px solid $color-white;
     text-transform: uppercase;
     margin-left: 10rem;
     margin-top: 10rem;
@@ -29,27 +29,91 @@
 .main {
   .top {
     &__heading {
-      @include base.mainHeading;
+      @include mainHeading;
       margin-bottom: 3rem;
       letter-spacing: 0.4rem;
     }
     &__text {
-      @include base.mainText;
+      @include mainText;
     }
   }
   .bottom {
-    &__heading {
-      @include base.mainHeading;
+    &__top--heading {
+      @include mainHeading;
+      color: $color-black;
     }
     &__text {
-      @include base.mainText;
+      @include mainText;
     }
 
-    &__link {
+    &__link,
+    &__link--mobile {
       padding: 1.5rem 4rem;
-      color: base.$color-white;
-      background-color: base.$color-black;
+      color: $color-black;
+      box-shadow: 0 0 0 0.1rem $color-black;
       font-size: 1.4rem;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      transition: background-color 0.2s, color 0.2s;
+      &:hover {
+        background-color: $color-black !important;
+        color: $color-white !important;
+      }
     }
+
+    &__link--mobile {
+      display: inline-block;
+      margin: 5rem auto 0 auto;
+    }
+
+    &__heading {
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+      z-index: 1;
+      align-self: end;
+      margin: 0 0 3rem 3rem;
+      color: $color-white;
+      font-size: clamp(2.4rem, 1vw, 3.2rem);
+      width: 17rem;
+      text-transform: uppercase;
+      font-family: $font-josefin;
+      letter-spacing: 0.1rem;
+      word-spacing: 0.5rem;
+    }
+  }
+}
+
+.footer {
+  &__link {
+    font-size: 1.5rem;
+    font-size: $font-alata;
+    color: $color-white;
+    letter-spacing: 0.1rem;
+    text-transform: capitalize;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
+    &::before {
+      @include footerHoverEffect(-0.5rem);
+    }
+  }
+
+  &__link:hover.footer__link::before {
+    opacity: 1;
+    width: 60%;
+  }
+
+  &__link:not(:first-child) {
+    margin-left: 2rem;
+  }
+
+  &__text {
+    margin-top: 2rem;
+    color: $color-very-dark-gray;
+    letter-spacing: 0.1rem;
+    font-size: 1.5rem;
+    font-family: $font-alata;
+    font-weight: 400;
+    max-width: 100%;
   }
 }

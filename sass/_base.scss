@@ -9,7 +9,7 @@ $font-alata: "Alata", sans-serif;
 $font-josefin: "Josefin Sans", sans-serif;
 
 @mixin mainHeading {
-  font-size: clamp(3.2rem, 2vw, 4.2rem);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
   text-transform: uppercase;
   font-family: $font-josefin;
 }
@@ -20,6 +20,20 @@ $font-josefin: "Josefin Sans", sans-serif;
   font-size: $font-alata;
   letter-spacing: 0.13rem;
   color: $color-dark-gray;
+}
+
+@mixin footerHoverEffect($bottom) {
+  content: "";
+  position: absolute;
+  height: 0.2rem;
+  width: 0;
+  bottom: $bottom;
+  left: 50%;
+  z-index: 100;
+  opacity: 0;
+  transform: translateX(-50%);
+  background-color: $color-white;
+  transition: width 0.2s, opacity 0.2s;
 }
 
 *,
