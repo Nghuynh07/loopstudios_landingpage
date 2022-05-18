@@ -22,7 +22,7 @@ $font-josefin: "Josefin Sans", sans-serif;
   color: $color-dark-gray;
 }
 
-@mixin footerHoverEffect($bottom) {
+@mixin underlinedHoverEffect($bottom) {
   content: "";
   position: absolute;
   height: 0.2rem;

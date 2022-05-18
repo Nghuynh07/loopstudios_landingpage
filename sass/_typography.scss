@@ -1,5 +1,38 @@
 @use "base" as *;
 
+.nav {
+  &__link {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    color: $color-white;
+    letter-spacing: 0.1rem;
+    position: relative;
+    font-weight: 300;
+    font-family: $font-josefin;
+    &::before {
+      @include underlinedHoverEffect(-0.5rem);
+    }
+
+    &:hover.nav__link::before {
+      opacity: 1;
+      width: 60%;
+    }
+
+    &:not(:first-child) {
+      margin-left: 3rem;
+    }
+  }
+  @media (max-width: 1077px) {
+    &__link {
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      &:not(:first-child) {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
 .header {
   &__heading {
     font-size: clamp(4rem, 5vw, 7.2rem);
@@ -94,7 +127,7 @@
     cursor: pointer;
     position: relative;
     &::before {
-      @include footerHoverEffect(-0.5rem);
+      @include underlinedHoverEffect(-0.5rem);
     }
   }
 

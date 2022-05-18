@@ -15,6 +15,45 @@ html {
   font-size: 62.5%;
 }
 
+.nav__link {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  color: hsl(0deg, 0%, 100%);
+  letter-spacing: 0.1rem;
+  position: relative;
+  font-weight: 300;
+  font-family: "Josefin Sans", sans-serif;
+}
+.nav__link::before {
+  content: "";
+  position: absolute;
+  height: 0.2rem;
+  width: 0;
+  bottom: -0.5rem;
+  left: 50%;
+  z-index: 100;
+  opacity: 0;
+  transform: translateX(-50%);
+  background-color: hsl(0deg, 0%, 100%);
+  transition: width 0.2s, opacity 0.2s;
+}
+.nav__link:hover.nav__link::before {
+  opacity: 1;
+  width: 60%;
+}
+.nav__link:not(:first-child) {
+  margin-left: 3rem;
+}
+@media (max-width: 1077px) {
+  .nav__link {
+    font-size: 2.4rem;
+    text-transform: uppercase;
+  }
+  .nav__link:not(:first-child) {
+    margin-left: 0;
+  }
+}
+
 .header__heading {
   font-size: clamp(4rem, 5vw, 7.2rem);
   font-weight: 300;
@@ -140,6 +179,82 @@ html {
   max-width: 100%;
 }
 
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 12vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 10rem;
+}
+.nav__logo {
+  width: clamp(14.4rem, 15vw, 19.2rem);
+}
+.nav__logo img {
+  width: 100%;
+  object-fit: cover;
+}
+.nav .menu {
+  display: none;
+  position: fixed;
+  width: 2.4rem;
+  height: 1.6rem;
+  top: 5.3rem;
+  right: clamp(2rem, 3vw, 5rem);
+  z-index: 1000;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.nav .menu__line {
+  display: inline-block;
+  width: 100%;
+  height: 0.2rem;
+  background-color: hsl(0deg, 0%, 100%);
+  pointer-events: none;
+}
+@media (max-width: 1077px) {
+  .nav {
+    padding: 0 clamp(2rem, 3vw, 5rem);
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.99);
+    height: 100vh;
+    top: -100vh;
+    left: 0;
+    transition: top 0.3s, left 0.3s;
+  }
+  .nav__logo {
+    position: fixed;
+    top: 5rem;
+  }
+  .nav__links {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  .nav__link {
+    margin: 2rem 0;
+  }
+  .nav .menu {
+    display: flex;
+  }
+}
+@media (max-width: 374px) {
+  .nav__links {
+    text-align: left;
+    margin: auto 0;
+  }
+}
+
+.change.nav {
+  top: 0;
+}
+
 .header {
   min-height: 70vh;
   width: 100%;
@@ -151,7 +266,7 @@ html {
   align-items: center;
 }
 @media (max-width: 500px) {
-  .header .header {
+  .header {
     background: url(../images/mobile/image-hero.jpg) center no-repeat;
     background-size: cover;
     object-position: center;

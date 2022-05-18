@@ -1,4 +1,84 @@
 @use "base" as *;
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 12vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 10rem;
+  &__logo {
+    width: clamp(14.4rem, 15vw, 19.2rem);
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &__links {
+  }
+
+  .menu {
+    display: none;
+    position: fixed;
+    width: 2.4rem;
+    height: 1.6rem;
+    top: 5.3rem;
+    right: clamp(2rem, 3vw, 5rem);
+    z-index: 1000;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    &__line {
+      display: inline-block;
+      width: 100%;
+      height: 0.2rem;
+      background-color: $color-white;
+      pointer-events: none;
+    }
+  }
+
+  @media (max-width: 1077px) {
+    padding: 0 clamp(2rem, 3vw, 5rem);
+    position: absolute;
+    background-color: rgba(0 0 0 / 0.99);
+    height: 100vh;
+    top: -100vh;
+    left: 0;
+    transition: top 0.3s, left 0.3s;
+    &__logo {
+      position: fixed;
+      top: 5rem;
+    }
+    &__links {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    &__link {
+      margin: 2rem 0;
+    }
+    .menu {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 374px) {
+    &__links {
+      text-align: left;
+      margin: auto 0;
+    }
+  }
+}
+.change.nav {
+  top: 0;
+}
+
 .header {
   min-height: 70vh;
   width: 100%;
@@ -9,11 +89,9 @@
   display: flex;
   align-items: center;
   @media (max-width: 500px) {
-    .header {
-      background: url(../images/mobile/image-hero.jpg) center no-repeat;
-      background-size: cover;
-      object-position: center;
-    }
+    background: url(../images/mobile/image-hero.jpg) center no-repeat;
+    background-size: cover;
+    object-position: center;
   }
 }
 
@@ -199,7 +277,7 @@
       margin-left: 2rem;
     }
     &::before {
-      @include footerHoverEffect(-0.8rem);
+      @include underlinedHoverEffect(-0.8rem);
     }
 
     &:hover.footer__img::before {
